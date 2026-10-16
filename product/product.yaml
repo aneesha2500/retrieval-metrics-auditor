@@ -1,0 +1,11 @@
+_ > nanoagent.plugin.manifest.ProductConfig:
+tagline: "Audit a code-retrieval run's accuracy and speed"
+summary: "Pick a logged retrieval run from our MinHash-LSH code-explanation agent (AST and token LSH, a full scan and a random baseline over MBPP) and the agent computes its recall, precision, MRR, hit rate, empty rate and latency percentiles. Every number is checked against the exact definitions, so you can trust the comparison between retrievers."
+highlights:
+  - "Five real runs: LSH at two thresholds, token LSH, full scan and random"
+  - "Exact metric definitions, including how empty results and percentiles count"
+  - "Each wrong metric is listed with the value it should have been"
+steps:
+  - "Ask which runs exist, or name one such as run-01-lsh-ast-t03"
+  - "It reads every query's retrieved and relevant examples and latencies"
+  - "It reports the metrics, and the verdict shows which are right"

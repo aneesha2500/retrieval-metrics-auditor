@@ -1,0 +1,1079 @@
+{
+ "description": "Retrieval runs of the codexplain agent over MBPP: AST/token MinHash-LSH, full scan and random. relevant = corpus examples whose exact Jaccard similarity of AST 4-shingles with the query is at least 0.4 (at most 10, most similar first).",
+ "runs": [
+  {
+   "run_id": "run-01-lsh-ast-t03",
+   "retriever": "lsh-ast-t03",
+   "k": 5,
+   "queries": [
+    {
+     "query_id": "mbpp-95",
+     "retrieved": [
+      "mbpp-528",
+      "mbpp-562",
+      "mbpp-544",
+      "mbpp-553",
+      "mbpp-642"
+     ],
+     "relevant": [
+      "mbpp-528",
+      "mbpp-562"
+     ],
+     "latency_ms": 1.0
+    },
+    {
+     "query_id": "mbpp-102",
+     "retrieved": [],
+     "relevant": [],
+     "latency_ms": 0.21
+    },
+    {
+     "query_id": "mbpp-130",
+     "retrieved": [
+      "mbpp-686",
+      "mbpp-741",
+      "mbpp-9",
+      "mbpp-839"
+     ],
+     "relevant": [
+      "mbpp-686"
+     ],
+     "latency_ms": 0.26
+    },
+    {
+     "query_id": "mbpp-176",
+     "retrieved": [
+      "mbpp-677",
+      "mbpp-848",
+      "mbpp-972",
+      "mbpp-869",
+      "mbpp-743"
+     ],
+     "relevant": [
+      "mbpp-677",
+      "mbpp-848"
+     ],
+     "latency_ms": 0.2
+    },
+    {
+     "query_id": "mbpp-187",
+     "retrieved": [
+      "mbpp-923",
+      "mbpp-934",
+      "mbpp-747",
+      "mbpp-873"
+     ],
+     "relevant": [
+      "mbpp-923"
+     ],
+     "latency_ms": 0.29
+    },
+    {
+     "query_id": "mbpp-195",
+     "retrieved": [
+      "mbpp-793",
+      "mbpp-733",
+      "mbpp-702",
+      "mbpp-734"
+     ],
+     "relevant": [
+      "mbpp-793"
+     ],
+     "latency_ms": 0.3
+    },
+    {
+     "query_id": "mbpp-199",
+     "retrieved": [
+      "mbpp-620"
+     ],
+     "relevant": [],
+     "latency_ms": 0.17
+    },
+    {
+     "query_id": "mbpp-212",
+     "retrieved": [
+      "mbpp-655",
+      "mbpp-770",
+      "mbpp-549",
+      "mbpp-634",
+      "mbpp-599"
+     ],
+     "relevant": [
+      "mbpp-655",
+      "mbpp-634",
+      "mbpp-770",
+      "mbpp-549",
+      "mbpp-599"
+     ],
+     "latency_ms": 0.25
+    },
+    {
+     "query_id": "mbpp-251",
+     "retrieved": [
+      "mbpp-513",
+      "mbpp-667",
+      "mbpp-825",
+      "mbpp-551",
+      "mbpp-966"
+     ],
+     "relevant": [
+      "mbpp-513"
+     ],
+     "latency_ms": 0.18
+    },
+    {
+     "query_id": "mbpp-259",
+     "retrieved": [
+      "mbpp-888",
+      "mbpp-616",
+      "mbpp-695",
+      "mbpp-809",
+      "mbpp-951"
+     ],
+     "relevant": [
+      "mbpp-888",
+      "mbpp-616",
+      "mbpp-695",
+      "mbpp-809"
+     ],
+     "latency_ms": 0.22
+    },
+    {
+     "query_id": "mbpp-337",
+     "retrieved": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 0.25
+    },
+    {
+     "query_id": "mbpp-390",
+     "retrieved": [
+      "mbpp-551",
+      "mbpp-825",
+      "mbpp-878",
+      "mbpp-621",
+      "mbpp-611"
+     ],
+     "relevant": [
+      "mbpp-825",
+      "mbpp-551"
+     ],
+     "latency_ms": 0.24
+    },
+    {
+     "query_id": "mbpp-406",
+     "retrieved": [],
+     "relevant": [],
+     "latency_ms": 0.19
+    },
+    {
+     "query_id": "mbpp-432",
+     "retrieved": [
+      "mbpp-848",
+      "mbpp-810"
+     ],
+     "relevant": [
+      "mbpp-848"
+     ],
+     "latency_ms": 0.11
+    },
+    {
+     "query_id": "mbpp-454",
+     "retrieved": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 0.22
+    }
+   ]
+  },
+  {
+   "run_id": "run-02-lsh-ast-t05",
+   "retriever": "lsh-ast-t05",
+   "k": 5,
+   "queries": [
+    {
+     "query_id": "mbpp-16",
+     "retrieved": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 0.18
+    },
+    {
+     "query_id": "mbpp-43",
+     "retrieved": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 0.15
+    },
+    {
+     "query_id": "mbpp-50",
+     "retrieved": [],
+     "relevant": [
+      "mbpp-528"
+     ],
+     "latency_ms": 0.19
+    },
+    {
+     "query_id": "mbpp-72",
+     "retrieved": [],
+     "relevant": [
+      "mbpp-904"
+     ],
+     "latency_ms": 0.09
+    },
+    {
+     "query_id": "mbpp-154",
+     "retrieved": [
+      "mbpp-825",
+      "mbpp-611",
+      "mbpp-645"
+     ],
+     "relevant": [
+      "mbpp-825",
+      "mbpp-611",
+      "mbpp-551",
+      "mbpp-827"
+     ],
+     "latency_ms": 0.12
+    },
+    {
+     "query_id": "mbpp-171",
+     "retrieved": [
+      "mbpp-716"
+     ],
+     "relevant": [
+      "mbpp-716"
+     ],
+     "latency_ms": 0.1
+    },
+    {
+     "query_id": "mbpp-239",
+     "retrieved": [
+      "mbpp-912"
+     ],
+     "relevant": [
+      "mbpp-747",
+      "mbpp-912"
+     ],
+     "latency_ms": 0.42
+    },
+    {
+     "query_id": "mbpp-248",
+     "retrieved": [
+      "mbpp-704",
+      "mbpp-738"
+     ],
+     "relevant": [
+      "mbpp-704",
+      "mbpp-738"
+     ],
+     "latency_ms": 0.16
+    },
+    {
+     "query_id": "mbpp-267",
+     "retrieved": [],
+     "relevant": [
+      "mbpp-641"
+     ],
+     "latency_ms": 0.1
+    },
+    {
+     "query_id": "mbpp-293",
+     "retrieved": [
+      "mbpp-731",
+      "mbpp-10",
+      "mbpp-4",
+      "mbpp-736",
+      "mbpp-786"
+     ],
+     "relevant": [
+      "mbpp-731",
+      "mbpp-10",
+      "mbpp-4",
+      "mbpp-736",
+      "mbpp-786"
+     ],
+     "latency_ms": 0.15
+    },
+    {
+     "query_id": "mbpp-316",
+     "retrieved": [
+      "mbpp-733"
+     ],
+     "relevant": [
+      "mbpp-733"
+     ],
+     "latency_ms": 0.28
+    },
+    {
+     "query_id": "mbpp-361",
+     "retrieved": [
+      "mbpp-966",
+      "mbpp-920"
+     ],
+     "relevant": [
+      "mbpp-966"
+     ],
+     "latency_ms": 0.11
+    },
+    {
+     "query_id": "mbpp-456",
+     "retrieved": [],
+     "relevant": [],
+     "latency_ms": 0.1
+    },
+    {
+     "query_id": "mbpp-474",
+     "retrieved": [
+      "mbpp-848"
+     ],
+     "relevant": [],
+     "latency_ms": 0.1
+    },
+    {
+     "query_id": "mbpp-486",
+     "retrieved": [],
+     "relevant": [],
+     "latency_ms": 0.28
+    }
+   ]
+  },
+  {
+   "run_id": "run-03-lsh-token-t03",
+   "retriever": "lsh-token-t03",
+   "k": 5,
+   "queries": [
+    {
+     "query_id": "mbpp-28",
+     "retrieved": [
+      "mbpp-934",
+      "mbpp-924",
+      "mbpp-703",
+      "mbpp-873",
+      "mbpp-521"
+     ],
+     "relevant": [],
+     "latency_ms": 0.71
+    },
+    {
+     "query_id": "mbpp-46",
+     "retrieved": [
+      "mbpp-670",
+      "mbpp-680",
+      "mbpp-820",
+      "mbpp-904",
+      "mbpp-866"
+     ],
+     "relevant": [],
+     "latency_ms": 0.2
+    },
+    {
+     "query_id": "mbpp-87",
+     "retrieved": [
+      "mbpp-821",
+      "mbpp-723",
+      "mbpp-623",
+      "mbpp-943",
+      "mbpp-696"
+     ],
+     "relevant": [
+      "mbpp-821"
+     ],
+     "latency_ms": 0.54
+    },
+    {
+     "query_id": "mbpp-184",
+     "retrieved": [
+      "mbpp-536"
+     ],
+     "relevant": [
+      "mbpp-878"
+     ],
+     "latency_ms": 0.1
+    },
+    {
+     "query_id": "mbpp-186",
+     "retrieved": [
+      "mbpp-879",
+      "mbpp-930",
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 0.45
+    },
+    {
+     "query_id": "mbpp-206",
+     "retrieved": [
+      "mbpp-726",
+      "mbpp-616",
+      "mbpp-695",
+      "mbpp-888",
+      "mbpp-809"
+     ],
+     "relevant": [
+      "mbpp-726"
+     ],
+     "latency_ms": 0.2
+    },
+    {
+     "query_id": "mbpp-208",
+     "retrieved": [
+      "mbpp-759",
+      "mbpp-900",
+      "mbpp-913",
+      "mbpp-676",
+      "mbpp-557"
+     ],
+     "relevant": [
+      "mbpp-759",
+      "mbpp-900",
+      "mbpp-913"
+     ],
+     "latency_ms": 0.29
+    },
+    {
+     "query_id": "mbpp-254",
+     "retrieved": [
+      "mbpp-906",
+      "mbpp-593",
+      "mbpp-727",
+      "mbpp-563",
+      "mbpp-647"
+     ],
+     "relevant": [
+      "mbpp-593",
+      "mbpp-727",
+      "mbpp-832",
+      "mbpp-933"
+     ],
+     "latency_ms": 0.19
+    },
+    {
+     "query_id": "mbpp-292",
+     "retrieved": [
+      "mbpp-811",
+      "mbpp-972",
+      "mbpp-750",
+      "mbpp-651",
+      "mbpp-878"
+     ],
+     "relevant": [],
+     "latency_ms": 0.2
+    },
+    {
+     "query_id": "mbpp-293",
+     "retrieved": [
+      "mbpp-574",
+      "mbpp-731",
+      "mbpp-623",
+      "mbpp-696",
+      "mbpp-943"
+     ],
+     "relevant": [
+      "mbpp-731",
+      "mbpp-10",
+      "mbpp-4",
+      "mbpp-736",
+      "mbpp-786"
+     ],
+     "latency_ms": 0.35
+    },
+    {
+     "query_id": "mbpp-339",
+     "retrieved": [
+      "mbpp-637",
+      "mbpp-636",
+      "mbpp-970",
+      "mbpp-924",
+      "mbpp-754"
+     ],
+     "relevant": [
+      "mbpp-637"
+     ],
+     "latency_ms": 0.47
+    },
+    {
+     "query_id": "mbpp-362",
+     "retrieved": [
+      "mbpp-658",
+      "mbpp-665",
+      "mbpp-717"
+     ],
+     "relevant": [
+      "mbpp-658",
+      "mbpp-517"
+     ],
+     "latency_ms": 0.15
+    },
+    {
+     "query_id": "mbpp-451",
+     "retrieved": [
+      "mbpp-542",
+      "mbpp-693",
+      "mbpp-732",
+      "mbpp-800",
+      "mbpp-812"
+     ],
+     "relevant": [
+      "mbpp-542",
+      "mbpp-693",
+      "mbpp-732",
+      "mbpp-748",
+      "mbpp-800",
+      "mbpp-812",
+      "mbpp-892",
+      "mbpp-563",
+      "mbpp-647",
+      "mbpp-7"
+     ],
+     "latency_ms": 0.33
+    },
+    {
+     "query_id": "mbpp-461",
+     "retrieved": [
+      "mbpp-764",
+      "mbpp-818",
+      "mbpp-828",
+      "mbpp-868",
+      "mbpp-819"
+     ],
+     "relevant": [
+      "mbpp-764",
+      "mbpp-818"
+     ],
+     "latency_ms": 0.26
+    },
+    {
+     "query_id": "mbpp-465",
+     "retrieved": [
+      "mbpp-662",
+      "mbpp-535",
+      "mbpp-716",
+      "mbpp-945",
+      "mbpp-588"
+     ],
+     "relevant": [
+      "mbpp-662"
+     ],
+     "latency_ms": 0.32
+    }
+   ]
+  },
+  {
+   "run_id": "run-04-full-scan",
+   "retriever": "full-scan",
+   "k": 5,
+   "queries": [
+    {
+     "query_id": "mbpp-68",
+     "retrieved": [
+      "mbpp-567",
+      "mbpp-914",
+      "mbpp-766",
+      "mbpp-819",
+      "mbpp-740"
+     ],
+     "relevant": [
+      "mbpp-567"
+     ],
+     "latency_ms": 1.78
+    },
+    {
+     "query_id": "mbpp-87",
+     "retrieved": [
+      "mbpp-821",
+      "mbpp-10",
+      "mbpp-4",
+      "mbpp-736",
+      "mbpp-786"
+     ],
+     "relevant": [
+      "mbpp-821"
+     ],
+     "latency_ms": 1.48
+    },
+    {
+     "query_id": "mbpp-118",
+     "retrieved": [
+      "mbpp-708",
+      "mbpp-715",
+      "mbpp-894",
+      "mbpp-569",
+      "mbpp-857"
+     ],
+     "relevant": [
+      "mbpp-708"
+     ],
+     "latency_ms": 1.3
+    },
+    {
+     "query_id": "mbpp-239",
+     "retrieved": [
+      "mbpp-747",
+      "mbpp-912",
+      "mbpp-608",
+      "mbpp-721",
+      "mbpp-1"
+     ],
+     "relevant": [
+      "mbpp-747",
+      "mbpp-912"
+     ],
+     "latency_ms": 2.35
+    },
+    {
+     "query_id": "mbpp-247",
+     "retrieved": [
+      "mbpp-918",
+      "mbpp-1",
+      "mbpp-608",
+      "mbpp-912",
+      "mbpp-747"
+     ],
+     "relevant": [],
+     "latency_ms": 2.8
+    },
+    {
+     "query_id": "mbpp-296",
+     "retrieved": [
+      "mbpp-841",
+      "mbpp-564",
+      "mbpp-831",
+      "mbpp-527",
+      "mbpp-767"
+     ],
+     "relevant": [
+      "mbpp-841",
+      "mbpp-564",
+      "mbpp-831",
+      "mbpp-527",
+      "mbpp-767",
+      "mbpp-556"
+     ],
+     "latency_ms": 1.87
+    },
+    {
+     "query_id": "mbpp-344",
+     "retrieved": [
+      "mbpp-536",
+      "mbpp-679",
+      "mbpp-872",
+      "mbpp-581",
+      "mbpp-525"
+     ],
+     "relevant": [],
+     "latency_ms": 1.4
+    },
+    {
+     "query_id": "mbpp-357",
+     "retrieved": [
+      "mbpp-562",
+      "mbpp-544",
+      "mbpp-611",
+      "mbpp-553",
+      "mbpp-642"
+     ],
+     "relevant": [
+      "mbpp-562"
+     ],
+     "latency_ms": 1.44
+    },
+    {
+     "query_id": "mbpp-418",
+     "retrieved": [
+      "mbpp-562",
+      "mbpp-544",
+      "mbpp-611",
+      "mbpp-538",
+      "mbpp-966"
+     ],
+     "relevant": [
+      "mbpp-562"
+     ],
+     "latency_ms": 1.35
+    },
+    {
+     "query_id": "mbpp-429",
+     "retrieved": [
+      "mbpp-616",
+      "mbpp-888",
+      "mbpp-695",
+      "mbpp-809",
+      "mbpp-726"
+     ],
+     "relevant": [
+      "mbpp-616",
+      "mbpp-888",
+      "mbpp-695",
+      "mbpp-809"
+     ],
+     "latency_ms": 1.58
+    },
+    {
+     "query_id": "mbpp-449",
+     "retrieved": [
+      "mbpp-677",
+      "mbpp-840",
+      "mbpp-760",
+      "mbpp-675",
+      "mbpp-963"
+     ],
+     "relevant": [],
+     "latency_ms": 1.64
+    },
+    {
+     "query_id": "mbpp-450",
+     "retrieved": [
+      "mbpp-513",
+      "mbpp-966",
+      "mbpp-667",
+      "mbpp-898",
+      "mbpp-869"
+     ],
+     "relevant": [
+      "mbpp-513"
+     ],
+     "latency_ms": 1.45
+    },
+    {
+     "query_id": "mbpp-458",
+     "retrieved": [
+      "mbpp-789",
+      "mbpp-882",
+      "mbpp-654",
+      "mbpp-811",
+      "mbpp-948"
+     ],
+     "relevant": [
+      "mbpp-789",
+      "mbpp-882"
+     ],
+     "latency_ms": 1.28
+    },
+    {
+     "query_id": "mbpp-461",
+     "retrieved": [
+      "mbpp-764",
+      "mbpp-818",
+      "mbpp-666",
+      "mbpp-868",
+      "mbpp-813"
+     ],
+     "relevant": [
+      "mbpp-764",
+      "mbpp-818"
+     ],
+     "latency_ms": 1.68
+    },
+    {
+     "query_id": "mbpp-482",
+     "retrieved": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 1.44
+    }
+   ]
+  },
+  {
+   "run_id": "run-05-random",
+   "retriever": "random",
+   "k": 5,
+   "queries": [
+    {
+     "query_id": "mbpp-50",
+     "retrieved": [
+      "mbpp-666",
+      "mbpp-578",
+      "mbpp-703",
+      "mbpp-834",
+      "mbpp-525"
+     ],
+     "relevant": [
+      "mbpp-528"
+     ],
+     "latency_ms": 0.01
+    },
+    {
+     "query_id": "mbpp-84",
+     "retrieved": [
+      "mbpp-538",
+      "mbpp-921",
+      "mbpp-775",
+      "mbpp-549",
+      "mbpp-688"
+     ],
+     "relevant": [
+      "mbpp-873"
+     ],
+     "latency_ms": 0.01
+    },
+    {
+     "query_id": "mbpp-170",
+     "retrieved": [
+      "mbpp-799",
+      "mbpp-530",
+      "mbpp-966",
+      "mbpp-760",
+      "mbpp-610"
+     ],
+     "relevant": [
+      "mbpp-649"
+     ],
+     "latency_ms": 0.01
+    },
+    {
+     "query_id": "mbpp-178",
+     "retrieved": [
+      "mbpp-520",
+      "mbpp-545",
+      "mbpp-723",
+      "mbpp-715",
+      "mbpp-536"
+     ],
+     "relevant": [
+      "mbpp-643",
+      "mbpp-719",
+      "mbpp-756",
+      "mbpp-787",
+      "mbpp-794",
+      "mbpp-879",
+      "mbpp-917",
+      "mbpp-930"
+     ],
+     "latency_ms": 0.01
+    },
+    {
+     "query_id": "mbpp-180",
+     "retrieved": [
+      "mbpp-624",
+      "mbpp-547",
+      "mbpp-783",
+      "mbpp-718",
+      "mbpp-531"
+     ],
+     "relevant": [],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-187",
+     "retrieved": [
+      "mbpp-924",
+      "mbpp-790",
+      "mbpp-564",
+      "mbpp-615",
+      "mbpp-823"
+     ],
+     "relevant": [
+      "mbpp-923"
+     ],
+     "latency_ms": 0.01
+    },
+    {
+     "query_id": "mbpp-207",
+     "retrieved": [
+      "mbpp-822",
+      "mbpp-799",
+      "mbpp-532",
+      "mbpp-796",
+      "mbpp-800"
+     ],
+     "relevant": [
+      "mbpp-608"
+     ],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-225",
+     "retrieved": [
+      "mbpp-704",
+      "mbpp-526",
+      "mbpp-614",
+      "mbpp-524",
+      "mbpp-786"
+     ],
+     "relevant": [],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-251",
+     "retrieved": [
+      "mbpp-940",
+      "mbpp-569",
+      "mbpp-649",
+      "mbpp-715",
+      "mbpp-574"
+     ],
+     "relevant": [
+      "mbpp-513"
+     ],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-300",
+     "retrieved": [
+      "mbpp-777",
+      "mbpp-561",
+      "mbpp-793",
+      "mbpp-658",
+      "mbpp-787"
+     ],
+     "relevant": [],
+     "latency_ms": 0.01
+    },
+    {
+     "query_id": "mbpp-345",
+     "retrieved": [
+      "mbpp-918",
+      "mbpp-850",
+      "mbpp-593",
+      "mbpp-553",
+      "mbpp-798"
+     ],
+     "relevant": [
+      "mbpp-690"
+     ],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-356",
+     "retrieved": [
+      "mbpp-793",
+      "mbpp-828",
+      "mbpp-597",
+      "mbpp-691",
+      "mbpp-550"
+     ],
+     "relevant": [
+      "mbpp-654"
+     ],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-458",
+     "retrieved": [
+      "mbpp-781",
+      "mbpp-865",
+      "mbpp-533",
+      "mbpp-789",
+      "mbpp-531"
+     ],
+     "relevant": [
+      "mbpp-789",
+      "mbpp-882"
+     ],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-468",
+     "retrieved": [
+      "mbpp-817",
+      "mbpp-606",
+      "mbpp-755",
+      "mbpp-849",
+      "mbpp-773"
+     ],
+     "relevant": [
+      "mbpp-524"
+     ],
+     "latency_ms": 0.0
+    },
+    {
+     "query_id": "mbpp-484",
+     "retrieved": [
+      "mbpp-719",
+      "mbpp-898",
+      "mbpp-661",
+      "mbpp-739",
+      "mbpp-800"
+     ],
+     "relevant": [
+      "mbpp-513",
+      "mbpp-667"
+     ],
+     "latency_ms": 0.0
+    }
+   ]
+  }
+ ]
+}
