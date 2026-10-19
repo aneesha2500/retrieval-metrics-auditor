@@ -15,7 +15,12 @@ class _Run:
     verify_output = staticmethod(runs.verify_run_output)
 
 
-TOOLS = {Tool.LIST_RUNS: _List, Tool.GET_RUN: _Run, Tool.COMPUTE_METRICS: metrics}
+class _Scores:
+    verify_input = staticmethod(runs.verify_run_input)
+    verify_output = staticmethod(runs.verify_scores_output)
+
+
+TOOLS = {Tool.LIST_RUNS: _List, Tool.GET_RUN: _Run, Tool.SCORE_QUERIES: _Scores, Tool.COMPUTE_METRICS: metrics}
 # task -> its output's check, verify_task(arguments, output, reference, workspace)
 TASKS = {Task.AUDIT_RUN: metrics.verify_task}
 

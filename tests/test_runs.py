@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from contract import ListRunsInput, RunInput
-from plugin import compute_metrics, get_run, list_runs
+from plugin import compute_metrics, get_run, list_runs, score_queries
 from plugin.runs import metrics, nearest_rank
 
 
@@ -40,3 +40,19 @@ def test_tools() -> None:
     assert compute_metrics(RunInput(run_id=run.run_id), Path(".")).queries_total == len(run.queries)
     with pytest.raises(ValueError):
         get_run(RunInput(run_id="run-99-none"), Path("."))
+
+
+@pytest.mark.parametrize("run_id", [r.run_id for r in list_runs(ListRunsInput(retriever=""), Path(".")).runs])
+def test_score_queries_aggregate_to_the_reference(run_id: str) -> None:
+    """Aggregating score_queries' rows as the task instructions say gives compute_metrics' values."""
+    scores = score_queries(RunInput(run_id=run_id), Path("."))
+    ref = compute_metrics(RunInput(run_id=run_id), Path("."))
+    rows = scores.queries
+    ev = [row for row in rows if row.evaluated]
+    assert (len(rows), len(ev)) == (ref.queries_total, ref.queries_evaluated)
+    for field, attr in (("recall_at_k", "recall"), ("precision_at_k", "precision"), ("mrr", "reciprocal_rank")):
+        assert abs(round(sum(getattr(row, attr) for row in ev) / len(ev), 4) - getattr(ref, field)) <= 0.0001
+    assert round(sum(row.hit for row in ev) / len(ev), 4) == ref.hit_rate
+    assert round(sum(row.empty for row in rows) / len(rows), 4) == ref.empty_rate
+    lat = scores.latencies_sorted_ms
+    assert (lat[7], lat[14]) == (ref.latency_p50_ms, ref.latency_p95_ms)

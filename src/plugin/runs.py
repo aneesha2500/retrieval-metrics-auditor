@@ -27,9 +27,11 @@ from contract import (
     ListRunsOutput,
     MetricsOutput,
     QueryRow,
+    QueryScore,
     RunInput,
     RunOutput,
     RunSummary,
+    ScoresOutput,
 )
 
 DATA = Path(__file__).with_name("data") / "runs.json"
@@ -63,6 +65,32 @@ def get_run(given: RunInput, workspace: Path) -> RunOutput:
         retriever=r["retriever"],
         k=r["k"],
         queries=[QueryRow(**row) for row in r["queries"]],
+    )
+
+
+def score_queries(given: RunInput, workspace: Path) -> ScoresOutput:
+    """Per-query scores, so the agent aggregates them instead of intersecting sets by hand."""
+    r = run(given.run_id)
+    k, rows = r["k"], r["queries"]
+    scores = []
+    for row in rows:
+        top, relevant = row["retrieved"][:k], set(row["relevant"])
+        found = len(set(top) & relevant)
+        rank = next((i for i, example in enumerate(top, 1) if example in relevant), None)
+        evaluated = bool(relevant)
+        scores.append(
+            QueryScore(
+                query_id=row["query_id"],
+                evaluated=evaluated,
+                empty=not row["retrieved"],
+                recall=round(found / len(relevant), 6) if evaluated else 0.0,
+                precision=round(found / k, 6) if evaluated else 0.0,
+                reciprocal_rank=round(1 / rank, 6) if evaluated and rank else 0.0,
+                hit=found > 0,
+            )
+        )
+    return ScoresOutput(
+        run_id=r["run_id"], k=k, queries=scores, latencies_sorted_ms=sorted(row["latency_ms"] for row in rows)
     )
 
 

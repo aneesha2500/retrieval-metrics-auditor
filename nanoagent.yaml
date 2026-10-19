@@ -1,7 +1,7 @@
 _ > nanoagent.plugin.v0001.ManifestConfig:
 id: retrieval-metrics-auditor
 name: Retrieval Metrics Auditor
-version: 0.1.1
+version: 0.1.2
 status: ready
 spec: nanoagent.plugin/v0001
 
@@ -21,6 +21,8 @@ tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
     description: List the bundled retrieval runs (run id, retriever, k, number of queries)
   get_run:
     description: Return one run's queries, each with its retrieved ids, ground-truth relevant ids and latency
+  score_queries:
+    description: Score each query of a run (evaluated, empty, recall, precision, reciprocal rank, hit) and list its latencies sorted ascending
   compute_metrics:
     description: Compute a run's retrieval metrics by the audit definitions (the audit-run reference)
 
@@ -29,17 +31,15 @@ tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
   audit-run:
     description: Compute a retrieval run's recall, precision, MRR, hit rate, empty rate and latency percentiles
     runner: agent
-    tools: [list_runs, get_run]
+    tools: [list_runs, get_run, score_queries]
     reference: compute_metrics
     instructions: |-
-      Call get_run with the run_id (list_runs shows the run ids) and compute these metrics from its queries. k is the run's k. A query is evaluated when its relevant list is not empty.
-      - queries_total: the number of queries in the run.
-      - queries_evaluated: the number of evaluated queries.
-      - recall_at_k: the mean over evaluated queries of |retrieved[:k] ∩ relevant| / |relevant|.
-      - precision_at_k: the mean over evaluated queries of |retrieved[:k] ∩ relevant| / k (divide by k even when fewer were retrieved).
-      - mrr: the mean over evaluated queries of 1 / (1-based rank of the first relevant example in retrieved), or 0 when none is retrieved.
-      - hit_rate: the fraction of evaluated queries that retrieved at least one relevant example.
-      - empty_rate: the fraction of all queries whose retrieved list is empty.
-      - latency_p50_ms and latency_p95_ms: nearest-rank percentiles over all queries' latency_ms: sort ascending and take the value at 1-based position ceil(p / 100 * n).
-      Round every rate to 4 decimals and copy the latencies exactly. Work through every query carefully, then submit the run_id and the metrics.
-      Work out every value yourself, then end by calling the submit tool with them. Never write the answer as a chat message instead: a run that ends without a submit call fails, whatever it wrote.
+      Call score_queries with the run_id (list_runs shows the run ids). It gives one row per query and the latencies sorted ascending. Do not intersect the retrieved and relevant lists yourself: use its rows. Then compute:
+      - queries_total: the number of rows.
+      - queries_evaluated: the number of rows with evaluated true.
+      - recall_at_k, precision_at_k, mrr: the mean of recall, precision and reciprocal_rank over the evaluated rows only (leave out rows with evaluated false; they are not zeros to average in).
+      - hit_rate: the number of evaluated rows with hit true, divided by queries_evaluated.
+      - empty_rate: the number of rows with empty true, divided by queries_total (all rows).
+      - latency_p50_ms and latency_p95_ms: nearest rank over latencies_sorted_ms, the value at 1-based position ceil(p / 100 * n), with n the number of latencies. For 15 queries these are positions 8 and 15.
+      Round every rate to 4 decimals and copy the two latencies exactly. Keep your working short.
+      Then end by calling the submit tool with the run_id and these nine values. Never write the answer as a chat message instead: a run that ends without a submit call fails, whatever it wrote.

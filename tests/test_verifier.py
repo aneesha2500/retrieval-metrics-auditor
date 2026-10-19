@@ -19,7 +19,11 @@ def reference(run_id: str = RUN) -> MetricsOutput:
 def verify(changes: dict | None = None, run_id: str = RUN) -> dict:
     output = plain_output(reference()) | (changes or {})
     return verifier.verify_task(
-        "audit-run", build_output({"run_id": run_id}, RunInput), build_output(output, MetricsOutput), reference(run_id), "."
+        "audit-run",
+        build_output({"run_id": run_id}, RunInput),
+        build_output(output, MetricsOutput),
+        reference(run_id),
+        ".",
     )
 
 
@@ -71,3 +75,22 @@ def test_checks_reference_output_is_well_formed() -> None:
     assert verifier.verify_output("compute_metrics", RunInput(run_id=RUN), good, ".")["valid"] is True
     bad = build_output(plain_output(good) | {"hit_rate": 1.5}, MetricsOutput)
     assert verifier.verify_output("compute_metrics", RunInput(run_id=RUN), bad, ".")["valid"] is False
+
+
+def test_score_queries_output_checks() -> None:
+    from contract import ScoresOutput
+    from plugin import score_queries
+
+    given = RunInput(run_id=RUN)
+    good = score_queries(given, Path("."))
+    assert verifier.verify_output("score_queries", given, good, ".")["valid"] is True
+    data = plain_output(good)
+    unsorted = data | {"latencies_sorted_ms": list(reversed(data["latencies_sorted_ms"]))}
+    assert verifier.verify_output("score_queries", given, build_output(unsorted, ScoresOutput), ".")["valid"] is False
+    rows = [dict(row) for row in data["queries"]]
+    idle = next(row for row in rows if not row["evaluated"])
+    idle["recall"] = 0.5
+    bad = data | {"queries": rows}
+    assert verifier.verify_output("score_queries", given, build_output(bad, ScoresOutput), ".")["valid"] is False
+    other = data | {"run_id": "run-02-lsh-ast-t05"}
+    assert verifier.verify_output("score_queries", given, build_output(other, ScoresOutput), ".")["valid"] is False

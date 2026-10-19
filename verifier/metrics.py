@@ -44,7 +44,11 @@ def verify_task(arguments, output, reference, workspace):
     if output.run_id != arguments.run_id:
         return result(False, f"the metrics are for {output.run_id}, not {arguments.run_id}", score=0.0)
     got, want = fields(output), fields(reference)
-    wrong = {name: {"submitted": got[name], "expected": want[name]} for name in want if not _right(name, got[name], want[name])}
+    wrong = {
+        name: {"submitted": got[name], "expected": want[name]}
+        for name in want
+        if not _right(name, got[name], want[name])
+    }
     score = (len(want) - len(wrong)) / len(want)
     if wrong:
         return result(False, f"{len(wrong)} of {len(want)} metric(s) are wrong", score=score, wrong=wrong)

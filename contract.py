@@ -10,6 +10,7 @@ from slimconfig import Output
 class Tool(Enum):
     LIST_RUNS = "list_runs"
     GET_RUN = "get_run"
+    SCORE_QUERIES = "score_queries"
     COMPUTE_METRICS = "compute_metrics"
 
 
@@ -62,6 +63,27 @@ class RunOutput(Output):
 
 
 @dataclass
+class QueryScore(Output):
+    query_id: Annotated[str, "The MBPP query problem, e.g. mbpp-17"]
+    evaluated: Annotated[bool, "Whether the query has at least one relevant example"]
+    empty: Annotated[bool, "Whether the query retrieved nothing"]
+    recall: Annotated[float, "|retrieved[:k] ∩ relevant| / |relevant|, to 6 decimals (0 when not evaluated)"]
+    precision: Annotated[float, "|retrieved[:k] ∩ relevant| / k, to 6 decimals (0 when not evaluated)"]
+    reciprocal_rank: Annotated[
+        float, "1 / rank of the first relevant retrieved example, to 6 decimals (0 when none, or not evaluated)"
+    ]
+    hit: Annotated[bool, "Whether at least one relevant example was retrieved"]
+
+
+@dataclass
+class ScoresOutput(Output):
+    run_id: Annotated[str, RUN_ID]
+    k: Annotated[int, "How many examples each query asked for"]
+    queries: Annotated[list[QueryScore], "One score row per query, in the run's order"]
+    latencies_sorted_ms: Annotated[list[float], "Every query's latency_ms, sorted ascending"]
+
+
+@dataclass
 class MetricsOutput(Output):
     run_id: Annotated[str, RUN_ID]
     queries_total: Annotated[int, "How many queries the run holds"]
@@ -78,6 +100,7 @@ class MetricsOutput(Output):
 TOOLS = {
     Tool.LIST_RUNS: (ListRunsInput, ListRunsOutput),
     Tool.GET_RUN: (RunInput, RunOutput),
+    Tool.SCORE_QUERIES: (RunInput, ScoresOutput),
     Tool.COMPUTE_METRICS: (RunInput, MetricsOutput),
 }
 TASKS = {Task.AUDIT_RUN: (RunInput, MetricsOutput)}

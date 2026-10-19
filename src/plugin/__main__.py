@@ -13,7 +13,7 @@ from mcp.server.stdio import stdio_server
 from slimconfig import build_output, output_schema, plain_output
 
 from contract import TOOLS, Tool
-from plugin import compute_metrics, get_run, list_runs
+from plugin import compute_metrics, get_run, list_runs, score_queries
 
 server = Server("retrieval-metrics-auditor")
 # NanoAgent names the one folder this plugin may write to.
@@ -22,6 +22,7 @@ WORKSPACE_ENV = "NANOAGENT_WORKSPACE"
 IMPLEMENTATIONS = {
     Tool.LIST_RUNS: list_runs,
     Tool.GET_RUN: get_run,
+    Tool.SCORE_QUERIES: score_queries,
     Tool.COMPUTE_METRICS: compute_metrics,
 }
 

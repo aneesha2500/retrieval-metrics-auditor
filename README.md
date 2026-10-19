@@ -13,13 +13,14 @@ checks every number.
 |---|---|---|
 | `list_runs` | Lists the bundled runs: run id, retriever, k and number of queries (optionally filtered by retriever) | `src/plugin/runs.py` |
 | `get_run` | Returns a run's queries, each with its retrieved example ids, ground-truth relevant ids and latency | `src/plugin/runs.py` |
+| `score_queries` | Scores each query (evaluated, empty, recall, precision, reciprocal rank, hit) and lists the latencies sorted, so the agent aggregates instead of intersecting lists by hand | `src/plugin/runs.py` |
 | `compute_metrics` | Computes the run's metrics by the definitions below; the `audit-run` reference | `src/plugin/runs.py` |
 
 ### Tasks
 
 | Task | Does | Runner |
 |---|---|---|
-| `audit-run` | Computes a run's recall, precision, MRR, hit rate, empty rate and p50/p95 latency | `agent`, with `list_runs` and `get_run`; reference `compute_metrics` |
+| `audit-run` | Computes a run's recall, precision, MRR, hit rate, empty rate and p50/p95 latency | `agent`, with `list_runs`, `get_run` and `score_queries`; reference `compute_metrics` |
 
 ### Metric definitions
 
@@ -43,6 +44,12 @@ Before the agent starts, NanoAgent runs `compute_metrics` and pins its output.
 - counts must match exactly;
 - rates must be within 0.0005 (they are reported to 4 decimals);
 - latencies must be within 0.005 ms (they are copied from the log).
+
+`score_queries` does the per-query set work; the agent still has to apply the
+run-level rules itself: average only over evaluated queries (unevaluated rows
+show zeros that must be left out), count empty retrievals over all queries, and
+pick the nearest-rank positions. A tool's output is checked too: one sorted
+latency per query, scores between 0 and 1, and zeros on unevaluated rows.
 
 The score is the fraction of the nine metrics that are right, and the verdict
 lists each wrong one with its expected value. Metrics for another run, or a
