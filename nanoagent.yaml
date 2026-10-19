@@ -1,7 +1,7 @@
 _ > nanoagent.plugin.v0001.ManifestConfig:
 id: retrieval-metrics-auditor
 name: Retrieval Metrics Auditor
-version: 0.1.0
+version: 0.1.1
 status: ready
 spec: nanoagent.plugin/v0001
 
@@ -42,3 +42,4 @@ tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
       - empty_rate: the fraction of all queries whose retrieved list is empty.
       - latency_p50_ms and latency_p95_ms: nearest-rank percentiles over all queries' latency_ms: sort ascending and take the value at 1-based position ceil(p / 100 * n).
       Round every rate to 4 decimals and copy the latencies exactly. Work through every query carefully, then submit the run_id and the metrics.
+      Work out every value yourself, then end by calling the submit tool with them. Never write the answer as a chat message instead: a run that ends without a submit call fails, whatever it wrote.
